@@ -1,0 +1,35 @@
+[package]
+name = "copilot-openai-proxy"
+version = "0.1.0"
+edition = "2021"
+description = "A local OpenAI-compatible proxy for GitHub Copilot"
+license = "MIT"
+readme = "README.md"
+include = [
+    "Cargo.toml",
+    "Cargo.lock",
+    "README.md",
+    "LICENSE",
+    "src/**",
+    ".cargo/**",
+]
+
+[dependencies]
+tokio = { version = "1.43", features = ["full"] }
+axum = { version = "0.8", features = ["tokio"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "stream", "json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rusqlite = { version = "0.33", features = ["bundled"] }
+rand = "0.8"
+base64 = "0.22"
+dirs = "5.0"
+futures-util = "0.3"
+tower-http = { version = "0.6", features = ["cors"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
