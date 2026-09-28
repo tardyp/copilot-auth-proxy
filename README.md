@@ -88,6 +88,17 @@ Request and response records are appended to `requests.log.jsonl` in the process
 
 The default listener is loopback-only. `--shared` exposes the API to all network interfaces; protect the generated key and use an appropriate network boundary when enabling it. Upstream TLS certificate verification is enabled.
 
+## Releases
+
+Pushing a version tag that starts with `v` builds the release binary on `windows-latest` and creates a GitHub release with the Windows executable attached:
+
+```sh
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The asset is named `copilot-openai-proxy-windows-x86_64.exe`. The workflow uses the locked dependency versions from `Cargo.lock` and generates release notes from commits since the previous tag.
+
 ## Development
 
 Format, test, lint, and package the project with:
