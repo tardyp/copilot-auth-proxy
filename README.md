@@ -90,7 +90,7 @@ The default listener is loopback-only. `--shared` exposes the API to all network
 
 ## Releases
 
-Pushing a version tag that starts with `v` builds the release binary on `windows-latest` and creates a GitHub release with the Windows executable attached:
+Every push to `master` builds the Windows release binary on `windows-latest`. Pushing a version tag that starts with `v` also creates a GitHub release with the Windows executable attached:
 
 ```sh
 git tag v0.1.0
